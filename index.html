@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Do you love me?</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #ffe6eb;
+    }
+    .container {
+      text-align: center;
+    }
+    h2 {
+      color: #333;
+    }
+    .button-container {
+      margin-top: 20px;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      font-size: 18px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .yes-btn {
+      background-color: #ff5e78;
+      color: white;
+    }
+    .no-btn {
+      background-color: #aaa;
+      color: white;
+      position: relative;
+    }
+    .result-container {
+      display: none;
+    }
+    img {
+      max-width: 250px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="question-container container">
+    <!-- ภาพเคลื่อนไหวตอนถาม -->
+    <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExdGFnanJqNnh2NXoyejFodDF1NjVzd21lMXVpYjZubjZicjkwNHViYiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/1JmGiBtqTuehfYxuy9/giphy.gif" alt="Cute bear love ask">
+    <h2>Do you love me?</h2>
+    <div class="button-container">
+      <button class="yes-btn js-yes-btn">Yes</button>
+      <button class="no-btn js-no-btn">No</button>
+    </div>
+  </div>
+
+  <div class="result-container container">
+    <!-- ภาพเคลื่อนไหวตอนตอบ Yes -->
+    <img src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif" alt="Love confirmed">
+    <h2>I knew it! 😍❤️</h2>
+  </div>
+
+  <script>
+    const yesBtn = document.querySelector('.js-yes-btn');
+    const noBtn = document.querySelector('.js-no-btn');
+    const questionContainer = document.querySelector('.question-container');
+    const resultContainer = document.querySelector('.result-container');
+
+    // ถ้ากด Yes
+    yesBtn.addEventListener('click', () => {
+      questionContainer.style.display = 'none';
+      resultContainer.style.display = 'block';
+    });
+
+    // ปุ่ม No หนีเวลาเอาเมาส์ไปชี้
+    noBtn.addEventListener('mouseover', () => {
+      const x = Math.floor(Math.random() * (window.innerWidth - noBtn.offsetWidth));
+      const y = Math.floor(Math.random() * (window.innerHeight - noBtn.offsetHeight));
+      noBtn.style.position = 'absolute';
+      noBtn.style.left = `${x}px`;
+      noBtn.style.top = `${y}px`;
+    });
+  </script>
+</body>
+</html>
